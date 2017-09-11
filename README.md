@@ -9,7 +9,9 @@ It is demo project which demonstrates communication between server and client, u
 | server | Contains server application. |
 | client | Contains client application |
 |client-server-message-format | message format to communicate between client and server|
-
+### Notes
+- Server was implemented using Java NIO. Using of this approach allows to work effectively with big concurrent number of consumers, without threads overhead.
+- Client and server use binary format for communication. It allows remove the need in additional "deserialization" process (in JSON or XML), which save CPU resources. For transform to bytes KRYO library is used. It is faster then ObjectInputStream-ObjectOutputStream almost in 10 times and use memory and CPU effective.
 ### Assembly
 run
 ```sh

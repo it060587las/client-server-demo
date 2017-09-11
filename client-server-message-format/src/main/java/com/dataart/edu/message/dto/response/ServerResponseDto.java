@@ -17,7 +17,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ServerResponseDto extends BaseMessageDto {
-
+    
+    private static final long serialVersionUID = -687991492884005033L;
+    
     private List<?> resultData;
 
     private boolean success = true;
