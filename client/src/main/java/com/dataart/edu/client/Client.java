@@ -98,7 +98,7 @@ public class Client implements Closeable {
     private void displayResults(ServerResponseDto serverResponse, BaseClientRequestDto command) {
         switch (command.getCommand()) {
             case LIST:
-                log.info("Number of finded objects: {} record(s)", serverResponse.getResultData().size());
+                log.info("Number of found objects: {} object(s)", serverResponse.getResultData().size());
                 serverResponse.getResultData().forEach((item) -> {
                     BirdDto birdDto = (BirdDto) item;
                     log.info("name={} color={} height={} width={}", birdDto.getName(), birdDto.getColor(), birdDto.getHeight(), birdDto.getWeight());
@@ -108,7 +108,7 @@ public class Client implements Closeable {
                 log.info("Bird {} added successfully.", command.getName());
                 break;
             case LIST_SIGHTS:
-                log.info("Number of finded objects: {} record(s)", serverResponse.getResultData().size());
+                log.info("Number of found objects: {} object(s)", serverResponse.getResultData().size());
                 serverResponse.getResultData().forEach((item) -> {
                     BirdSightDto sightDto = (BirdSightDto) item;
                     log.info("name={} location={} date={}", sightDto.getName(), sightDto.getLocation(), resultDateFormatter.print((long) sightDto.getStart()));
