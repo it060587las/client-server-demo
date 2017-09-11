@@ -18,7 +18,7 @@ run
 $ mvn clean install
 ```
 ### Starting server
-Go to directory **path_to_project/runnable** or to **path_to_project/server/target**
+After assembly go to directory  **path_to_project/server/target**
 There will be jar file *runnable-server.jar*
 You can start it with 
 ```sh
@@ -29,7 +29,7 @@ Available client options
 - **-data directory_location** - directory to store files, must be absolute path. (Optional, by default ~/serverdata)
 
 ### Starting client
-Go to directory path_to_project/runnable or path_to_project/client/target
+After assembly go to directory  **path_to_project/client/target**
 There will be jar file *runnable-client.jar*
 You can start it with 
 ```sh

@@ -9,7 +9,7 @@ $ mvn clean install
 ```
 
 ### Starting client
-Go to directory **path_to_project/runnable** or **path_to_project/client/target**
+After assembly go to directory  **path_to_project/client/target**
 There will be jar file *runnable-client.jar*
 You can start it with 
 ```sh
