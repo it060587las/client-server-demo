@@ -47,7 +47,7 @@ public class BirdsDaoWrapper {
     /**
      * Used for converting objects to String
      */
-    private final static ObjectMapper jsonConverter = new ObjectMapper();
+    private final static ObjectMapper JSON_CONVERTER = new ObjectMapper();
     /**
      * How often save process will arise.
      */
@@ -197,7 +197,7 @@ public class BirdsDaoWrapper {
                 BufferedReader br = new BufferedReader(isr)) {
             String line;
             while ((line = br.readLine()) != null) {
-                T deserialized = jsonConverter.readValue(line, objectTypeToRead);
+                T deserialized = JSON_CONVERTER.readValue(line, objectTypeToRead);
                 consumer.accept(deserialized);
             }
         }
@@ -273,7 +273,7 @@ public class BirdsDaoWrapper {
      */
     private void addStringToPortion(List<String> portionToFlush, Object data, Path filePath) throws IllegalArgumentException {
         try {
-            portionToFlush.add(jsonConverter.writeValueAsString(data));
+            portionToFlush.add(JSON_CONVERTER.writeValueAsString(data));
             if (portionToFlush.size() >= DEFAULT_FLUSH_SIZE) {
                 flushPortionToDisk(portionToFlush, filePath);
             }
