@@ -2,7 +2,6 @@ package com.dataart.edu.server;
 
 import com.dataart.edu.message.format.util.FileUtil;
 import com.dataart.edu.server.ConfigurationCreator.ServerConfiguration;
-import com.dataart.edu.server.dao.IBirdsDao;
 import com.dataart.edu.server.spring.config.ApplicationConfiguration;
 import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
