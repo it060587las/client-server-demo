@@ -89,23 +89,23 @@ public class ServerMessageProcessor {
     /**
      * Processing of command from client.
      *
-     * @param clientCommand command from client.
+     * @param clientRequest command from client.
      * @param selectionKey key of SocketChannel
      * @throws IOException if, for example, client terminated connection.
      * @see BaseClientRequestDto
      * @see SelectionKey
      */
-    private void processMessageNoConcurrent(final BaseClientRequestDto clientCommand, SelectionKey selectionKey, byte messageAsBytes[]) throws IOException {
+    private void processMessageNoConcurrent(final BaseClientRequestDto clientRequest, SelectionKey selectionKey, byte messageAsBytes[]) throws IOException {
         ServerResponseDto serverAnswer = new ServerResponseDto();
         try {
-            switch (clientCommand.getCommand()) {
+            switch (clientRequest.getCommand()) {
                 case ADD:
                     AddBirdRequestDto addCommand = BaseMessageDto.deserialize(messageAsBytes, AddBirdRequestDto.class);
-                    daoComponent.addBird(new BirdDto(clientCommand.getName(), addCommand.getColor(), addCommand.getHeight(), addCommand.getWeight()));
+                    daoComponent.addBird(new BirdDto(clientRequest.getName(), addCommand.getColor(), addCommand.getHeight(), addCommand.getWeight()));
                     break;
                 case ADD_SIGHT:
                     SightingRequestDto addSightingCommand = BaseMessageDto.deserialize(messageAsBytes, SightingRequestDto.class);
-                    daoComponent.addSight(new BirdSightDto(clientCommand.getName(), addSightingCommand.getLocation(), addSightingCommand.getStart()));
+                    daoComponent.addSight(new BirdSightDto(clientRequest.getName(), addSightingCommand.getLocation(), addSightingCommand.getStart()));
                     break;
                 case LIST:
                     List<BirdDto> resultList = daoComponent.findAllBirds();
@@ -113,11 +113,11 @@ public class ServerMessageProcessor {
                     break;
                 case LIST_SIGHTS:
                     SightingRequestDto listSightingCommand = BaseMessageDto.deserialize(messageAsBytes, SightingRequestDto.class);
-                    List<BirdSightDto> resultSet = daoComponent.findSight(new BirdSightDto(clientCommand.getName(), listSightingCommand.getLocation(), listSightingCommand.getStart(), listSightingCommand.getEnd()));
+                    List<BirdSightDto> resultSet = daoComponent.findSight(new BirdSightDto(clientRequest.getName(), listSightingCommand.getLocation(), listSightingCommand.getStart(), listSightingCommand.getEnd()));
                     serverAnswer.setResultData(resultSet);
                     break;
                 case REMOVE:
-                    daoComponent.removeBird(clientCommand.getName());
+                    daoComponent.removeBird(clientRequest.getName());
                     break;
                 case QUIT:
                     log.info("Recived command QUITE. Server will be stoped.");
@@ -164,7 +164,7 @@ public class ServerMessageProcessor {
         log.info("DAO stopped {}", daoStopped);
         log.info("Try stoping executor");
         procCountExecutor.shutdownNow();
-        boolean procCountExecutorStoped = false;
+        boolean procCountExecutorStoped;
         try {
             procCountExecutorStoped
                     = procCountExecutor.awaitTermination(WAIT_TERMINATION_PERIOD_SECONDS, TimeUnit.SECONDS);
