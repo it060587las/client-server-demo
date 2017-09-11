@@ -33,7 +33,7 @@ public class Client implements Closeable {
     /**
      * Date formatter to format results.
      */
-    private final DateTimeFormatter resultDateFormatter = DateTimeFormat.forPattern("yyyy MM dd HH mm ss");
+    private final DateTimeFormatter resultDateFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
     /**
      * Client port, on which it will try to connect.
      */

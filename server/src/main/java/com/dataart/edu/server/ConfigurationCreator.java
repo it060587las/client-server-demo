@@ -104,7 +104,7 @@ public class ConfigurationCreator {
                 break;
             case "-proc_count":
                 configuration.procCount = Integer.parseInt(optionValue);
-                if (configuration.procCount < 0) {
+                if (configuration.procCount <= 0) {
                     throw new NumberFormatException("Invalid value of proc_count parameter.");
                 }
                 break;
