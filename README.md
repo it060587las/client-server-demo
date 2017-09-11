@@ -10,11 +10,6 @@ It is demo project which demonstrates communication between server and client, u
 | client | Contains client application |
 |client-server-message-format | message format to communicate between client and server|
 
-### Lombok + Eclipse
-In order to reduce boilerplate code, in demo application used Lombok project. 
-In Eclipse all is works fine, bild passes successfully, but Eclipse highlights some cases of Lombok usage as error.
-In order to fix it, install pluggin in Eclipse. Details [here](https://projectlombok.org/setup/eclipse).
-
 ### Assembly
 run
 ```sh
