@@ -23,11 +23,11 @@ public class ConfigurationCreator {
     /**
      * Min port range
      */
-    private final int minValidTcpPortRange = 1;
+    private final static int MIN_VALID_TCP_PORT_RANGE = 1;
     /**
      * Max port range
      */
-    private final int maxValidTcpPortRange = 65535;
+    private final static int MAX_VALID_TCP_PORT_RANGE = 65535;
     /**
      * Avaliable command line arguments.
      */
@@ -55,7 +55,6 @@ public class ConfigurationCreator {
     @ToString
     @Getter
     public final static class ServerConfiguration {
-
         private int port = DEFAULT_SERVER_PORT;
         private String dataDirectory = DEFAULT_DIRECTORY;
         private int procCount = DEFAULT_PROC_COUNT;
@@ -96,7 +95,7 @@ public class ConfigurationCreator {
         switch (currentOption) {
             case "-port":
                 configuration.port = Integer.parseInt(optionValue);
-                if (configuration.port < minValidTcpPortRange || configuration.port > maxValidTcpPortRange) {
+                if (configuration.port < MIN_VALID_TCP_PORT_RANGE || configuration.port > MAX_VALID_TCP_PORT_RANGE) {
                     throw new NumberFormatException("Port range invalid.");
                 }
                 break;
