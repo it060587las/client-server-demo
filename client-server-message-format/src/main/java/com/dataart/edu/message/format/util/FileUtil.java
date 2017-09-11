@@ -27,13 +27,13 @@ public class FileUtil {
             throw new IOException("Path muts be absolute path. Please, provide absolute path, or use default.");
         } else if (!Files.exists(path)) {
             if (!Files.notExists(path)) {
-                throw new IOException("Probably you don't have permissions.");
+                throw new IOException("Probably you don't have permissions");
             }
             Files.createDirectory(path);
             log.info("Successfully created {}", filePath);
         } else {
             if (!Files.isReadable(path) || !Files.isWritable(path)) {
-                throw new IOException("Probably you don't have permissions.");
+                throw new IOException("Probably you don't have permissions");
             }
         }
         log.info("Checking file {} successfull.", filePath);
