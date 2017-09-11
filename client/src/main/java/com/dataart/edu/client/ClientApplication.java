@@ -23,7 +23,15 @@ public class ClientApplication {
     private final int maxValidTcpPortRange = 65535;
     private final int defaultClientPort = 3000;
     private final String defaultHostToConnect = "localhost";
-    private final List<String> avaliableArguments = Arrays.asList("-serverPort", "-serverHost", "-addbird", "-addsighting", "-listsightings", "-listbirds", "-remove", "-quit");
+    private final List<String> avaliableArguments = Arrays.asList(
+            "-serverPort", 
+            "-serverHost", 
+            "-addbird", 
+            "-addsighting", 
+            "-listsightings", 
+            "-listbirds", 
+            "-remove", 
+            "-quit");
 
     /**
      * Run client application.
