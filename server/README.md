@@ -8,7 +8,7 @@ run
 $ mvn clean install
 ```
 ### Starting server
-Go to directory path_to_project/runnable or path_to_project/server/target
+Go to directory **path_to_project/runnable** or **path_to_project/server/target**
 There will be jar file *runnable-server.jar*
 You can start it with 
 ```sh
